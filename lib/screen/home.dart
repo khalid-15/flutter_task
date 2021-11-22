@@ -17,13 +17,13 @@ class _HomeState extends State<Home> {
   // var admins = "";
   @override
   void initState() {
-    // _getAdmins();
+    _getAdmins();
     super.initState();
   }
 
   _getAdmins() async {
-    var res = await Service().getPublicData('/users/admins');
-    print(res);
+    var res = await Network.getPublicData('/users/admins');
+    // print(res);
     // var body = json.decode(res);
     // print(body);
   }
@@ -115,11 +115,11 @@ class _HomeState extends State<Home> {
                                         decoration: BoxDecoration(
                                           borderRadius:
                                               BorderRadius.circular(10.0),
-                                          image: DecorationImage(
-                                            fit: BoxFit.fill,
-                                            image: NetworkImage(
-                                                "http://mark.dbestech.com/uploads/images/test.png"),
-                                          ),
+                                          // image: DecorationImage(
+                                          //   fit: BoxFit.fill,
+                                          //   image: NetworkImage(
+                                          //       "http://mark.dbestech.com/uploads/images/test.png"),
+                                          // ),
                                         )))),
                             Positioned(
                                 top: 45,

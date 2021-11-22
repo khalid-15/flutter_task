@@ -16,7 +16,7 @@ class Service {
         return 'failed';
       }
     } catch (e) {
-      print(e);
+      // print(e);
       return 'failed';
     }
   }

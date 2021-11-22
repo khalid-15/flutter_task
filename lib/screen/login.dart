@@ -153,13 +153,15 @@ class _LoginState extends State<Login> {
     });
 
     var data = {
-      'code': codeController.text,
+      'code': int.parse(codeController.text),
       // 'code_sent': code,
       // 'phone_number': userData,
     };
 
     // print(data);
+    print('khalid');
     var res = await Network().postData(data, '/user/auth');
+    print('khalid');
     print(res);
     // var body = json.decode(res.body);
     // print(res.body);

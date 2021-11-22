@@ -63,7 +63,7 @@ packages:
       name: dio
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.0.3"
+    version: "4.0.4"
   dio_cookie_manager:
     dependency: "direct main"
     description:

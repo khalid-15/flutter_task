@@ -16,20 +16,26 @@ class SingletonDio {
 }
 
 class Network {
-  final String _url = 'http://10.0.2.2:8000/api';
+  static var dio = Dio();
+  static String _url = 'http://10.0.2.2:8000/api';
   //when using android studio emulator, change localhost to 10.0.2.2
-
   postData(data, apiUrl) async {
     var fullUrl = _url + apiUrl;
+    // print(jsonEncode(data));
+    // print(response);
+    // return response;
+    // return json.decode(response.body)
+
     var response =
         await SingletonDio.getDio().post(fullUrl, data: jsonEncode(data));
-    // print(response);
-    return response; // return json.decode(response.body)
+    print(response);
+    return response;
   }
 
-  getPublicData(apiUrl) async {
-    var response =
-        await SingletonDio.getDio().get(_url + apiUrl + await _getToken());
+  static getPublicData(apiUrl) async {
+    var response = await SingletonDio.getDio().get(_url + apiUrl,
+        options: Options(headers: {"Authorization": 'Bearer $_getToken()'}));
+
     return response;
   }
 
@@ -40,9 +46,10 @@ class Network {
     // 'Cookie': 'cookie'
   };
 
-  _getToken() async {
+  static _getToken() async {
     SharedPreferences localStorage = await SharedPreferences.getInstance();
     var token = localStorage.getString('token');
-    return '?token=$token';
+    // return '?token=$token';
+    return token;
   }
 }
